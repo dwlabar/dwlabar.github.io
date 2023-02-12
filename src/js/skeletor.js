@@ -12,7 +12,7 @@
 function setHeight() {
   windowHeight = $(window).height();
   if (windowHeight > 250) {
-    $('.js-screen-height').css('height', (windowHeight));
+    $('.js-screen-height').css('height', windowHeight);
   }
 };
 
@@ -32,18 +32,18 @@ function panelTime() {
 
 // -----------------------------------------------------------------------------
 //
-//  WINDOW LOAD
+//  PRELOADER OVERLAY
 //
 // -----------------------------------------------------------------------------
 
-$(window).load(function () {
-
-  // ---------------------------------------------------------------------------
-  //  PRELOADER OVERLAY
-  // ---------------------------------------------------------------------------
-
+$(window).on('load', function () {
   $('.overlay').fadeOut(600);
 });
+
+// set timeout function to fade out preloader element after 5 seconds
+setTimeout(function () {
+  $('.overlay').fadeOut(600);
+}, 5000);
 
 // -----------------------------------------------------------------------------
 //
@@ -51,7 +51,7 @@ $(window).load(function () {
 //
 // -----------------------------------------------------------------------------
 
-$(document).ready(function(){
+$(function () {
 
   // Toggle Panel
   $('.js-toggle-panel').click(function() {
@@ -60,8 +60,8 @@ $(document).ready(function(){
 
   // Set the height of all viewport equal height elements
   setHeight();
-}); // END DOCUMENT READY
+});
 
-$( window ).resize(function() {
+$(window).on('resize', function() {
   setHeight();
 });
