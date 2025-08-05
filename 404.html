@@ -8,6 +8,10 @@
       background-color: #000000;
     }
   </style>
+  <script>
+    localStorage.setItem("redirectPath", location.pathname + location.search + location.hash);
+    window.location.replace("/");
+  </script>
 </head>
 
 <body>
